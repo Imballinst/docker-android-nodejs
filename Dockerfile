@@ -2,9 +2,9 @@ FROM nao20010128nao/android-build:latest
 
 MAINTAINER Or Yagel <or@soluto.com>
 
-ENV NODEJS_VERSION=6.11.3 \
-    ANDROID_NDK=/opt/android-ndk/android-ndk-r13b \
-    PATH=$PATH:${ANDROID_NDK}:/opt/node/bin
+ENV NODEJS_VERSION=6.11.3
+ENV ANDROID_NDK=/opt/android-ndk/android-ndk-r13b
+ENV PATH=$PATH:${ANDROID_NDK}:/opt/node/bin
 
 WORKDIR "/opt/node"
 
