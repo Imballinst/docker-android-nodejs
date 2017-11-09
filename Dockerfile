@@ -6,6 +6,7 @@ ARG ANDROID_NDK_VERSION=13b
 ARG ANDROID_CMAKE_VERSION=3.6.3155560
 
 ENV NODEJS_VERSION=6.11.3
+ENV ANDROID_NDK_HOME=/opt/android-ndk
 ENV ANDROID_NDK=/opt/android-ndk/android-ndk-r13b
 ENV PATH=$PATH:${ANDROID_NDK}:/opt/node/bin
 
@@ -13,6 +14,7 @@ WORKDIR "/opt/node"
 
 RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean && rm -rf /var/lib/apt/lists/* && \
     
+    echo $PATH && \
     mkdir /opt/android-ndk && \
     mkdir /opt/android-ndk-tmp && \
     cd /opt/android-ndk-tmp && wget -q https://dl.google.com/android/repository/android-ndk-r${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
