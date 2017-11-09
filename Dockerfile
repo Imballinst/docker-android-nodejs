@@ -10,8 +10,6 @@ ENV ANDROID_NDK_HOME=/opt/android-ndk
 ENV ANDROID_NDK=/opt/android-ndk/android-ndk-r13b
 ENV PATH=$PATH:${ANDROID_NDK}:/opt/node/bin
 
-WORKDIR "/opt/node"
-
 RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean && rm -rf /var/lib/apt/lists/* && \
     
     echo $PATH && \
@@ -24,9 +22,11 @@ RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean && rm -r
     mkdir /opt/android-cmake-tmp && \
     cd /opt/android-cmake-tmp && wget -q https://dl.google.com/android/repository/cmake-${ANDROID_CMAKE_VERSION}-linux-x86_64.zip -O android-cmake.zip && \
     unzip -q android-cmake.zip -d android-cmake && mv ./android-cmake ${ANDROID_HOME}/cmake && \
-    rm -rf /opt/android-cmake-tmp && \
-    
-    ls /bin/ && \
+    rm -rf /opt/android-cmake-tmp
+
+WORKDIR "/opt/node"
+
+RUN ls /bin/ && \
     cd ~ && \
     apt-get install -y curl ca-certificates --no-install-recommends && \
     curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 && \
