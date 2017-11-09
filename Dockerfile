@@ -27,7 +27,6 @@ RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean && rm -r
 WORKDIR "/opt/node"
 
 RUN ls /bin/ && \
-    cd ~ && \
     apt-get install -y curl ca-certificates --no-install-recommends && \
     curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 && \
     apt-get install -y git && \
