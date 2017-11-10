@@ -6,11 +6,12 @@ ARG ANDROID_NDK_VERSION=10e
 ARG ANDROID_CMAKE_VERSION=3.6.3155560
 
 ENV NODEJS_VERSION=6.11.3
+ENV ANDROID_SDK=/opt/android-sdk-linux
 ENV ANDROID_NDK_HOME=/opt/android-ndk
 ENV ANDROID_NDK=/opt/android-ndk/android-ndk-r${ANDROID_NDK_VERSION}
 ENV PATH=$PATH:${ANDROID_NDK}:/opt/node/bin
 
-RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean && rm -rf /var/lib/apt/lists/* && \
+RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean file && rm -rf /var/lib/apt/lists/* && \
     
     mkdir /opt/android-ndk && \
     mkdir /opt/android-ndk-tmp && \
