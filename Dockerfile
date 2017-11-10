@@ -1,8 +1,8 @@
 FROM nao20010128nao/android-build:latest
 
-MAINTAINER Or Yagel <or@soluto.com>
+MAINTAINER Try Ajitiono <ballinst@gmail.com>
 
-ARG ANDROID_NDK_VERSION=13b
+ARG ANDROID_NDK_VERSION=10e
 ARG ANDROID_CMAKE_VERSION=3.6.3155560
 
 ENV NODEJS_VERSION=6.11.3
@@ -16,12 +16,7 @@ RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean && rm -r
     mkdir /opt/android-ndk-tmp && \
     cd /opt/android-ndk-tmp && wget -q https://dl.google.com/android/repository/android-ndk-r${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
     unzip -q android-ndk-r${ANDROID_NDK_VERSION}-linux-x86_64.zip && mv ./android-ndk-r${ANDROID_NDK_VERSION} ${ANDROID_NDK_HOME} && \
-    rm -rf /opt/android-ndk-tmp && \
-
-    mkdir /opt/android-cmake-tmp && \
-    cd /opt/android-cmake-tmp && wget -q https://dl.google.com/android/repository/cmake-${ANDROID_CMAKE_VERSION}-linux-x86_64.zip -O android-cmake.zip && \
-    unzip -q android-cmake.zip -d android-cmake && mv ./android-cmake ${ANDROID_HOME}/cmake && \
-    rm -rf /opt/android-cmake-tmp
+    rm -rf /opt/android-ndk-tmp
 
 WORKDIR "/opt/node"
 
