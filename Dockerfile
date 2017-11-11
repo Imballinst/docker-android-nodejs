@@ -11,7 +11,7 @@ ENV ANDROID_NDK_HOME=/opt/android-ndk
 ENV ANDROID_NDK=/opt/android-ndk/android-ndk-r${ANDROID_NDK_VERSION}
 ENV PATH=$PATH:${ANDROID_NDK}:/opt/node/bin
 
-RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean && apt-get install file && rm -rf /var/lib/apt/lists/* && \
+RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean && rm -rf /var/lib/apt/lists/* && \
     
     mkdir /opt/android-ndk && \
     mkdir /opt/android-ndk-tmp && \
@@ -26,7 +26,7 @@ RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean && apt-g
 
 WORKDIR "/opt/node"
 
-RUN apt-get install -y curl ca-certificates --no-install-recommends && \
+RUN apt-get install -y curl ca-certificates file --no-install-recommends && \
     curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 && \
     apt-get install -y git && \
     rm -rf /var/lib/apt/lists/* && \
