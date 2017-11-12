@@ -6,6 +6,7 @@ ARG ANDROID_NDK_VERSION=10e
 ARG ANDROID_CMAKE_VERSION=3.6.3155560
 
 ENV NODEJS_VERSION=6.11.3
+ENV ANDROID_SDK=/opt/android-sdk-linux
 ENV ANDROID_NDK_HOME=/opt/android-ndk
 ENV ANDROID_NDK=/opt/android-ndk/android-ndk-r${ANDROID_NDK_VERSION}
 ENV PATH=$PATH:${ANDROID_NDK}:/opt/node/bin
@@ -23,6 +24,7 @@ WORKDIR "/opt/node"
 RUN apt-get install -y curl ca-certificates --no-install-recommends && \
     curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 && \
     apt-get install -y git && \
+    apt-get install -y file && \
     rm -rf /var/lib/apt/lists/* && \
     npm install npm -g && \
     npm install -g react-native-cli && \
