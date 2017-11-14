@@ -1,14 +1,13 @@
 FROM nao20010128nao/android-build:latest
 
-MAINTAINER Try Ajitiono <ballinst@gmail.com>
+LABEL maintainer="Try Ajitiono <ballinst@gmail.com>"
 
+ARG NODEJS_VERSION=6.11.3
 ARG ANDROID_NDK_VERSION=10e
-ARG ANDROID_CMAKE_VERSION=3.6.3155560
 
-ENV NODEJS_VERSION=6.11.3
-ENV ANDROID_SDK=/opt/android-sdk-linux
-ENV ANDROID_NDK_HOME=/opt/android-ndk
 ENV ANDROID_NDK=/opt/android-ndk/android-ndk-r${ANDROID_NDK_VERSION}
+ENV ANDROID_SDK=/opt/android-sdk-linux
+
 ENV PATH=$PATH:${ANDROID_NDK}:/opt/node/bin
 
 RUN set -x && apt-get update -qq && apt upgrade -y -qq && apt-get clean && rm -rf /var/lib/apt/lists/* && \
