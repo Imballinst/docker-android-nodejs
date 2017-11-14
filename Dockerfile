@@ -4,8 +4,9 @@ LABEL maintainer="Try Ajitiono <ballinst@gmail.com>"
 
 ARG NODEJS_VERSION=6.11.3
 ARG ANDROID_NDK_VERSION=10e
+ARG ANDROID_NDK_HOME=/opt/android-ndk
 
-ENV ANDROID_NDK=/opt/android-ndk/android-ndk-r${ANDROID_NDK_VERSION}
+ENV ANDROID_NDK=${ANDROID_NDK_HOME}/android-ndk-r${ANDROID_NDK_VERSION}
 ENV ANDROID_SDK=/opt/android-sdk-linux
 
 ENV PATH=$PATH:${ANDROID_NDK}:/opt/node/bin
