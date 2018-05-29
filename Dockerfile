@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y curl ca-certificates file build-essenti
     mkdir /opt/android-ndk-tmp && \
     cd /opt/android-ndk-tmp && wget -q https://dl.google.com/android/repository/android-ndk-r${ANDROID_NDK_VERSION}-linux-x86_64.zip && \
     unzip -q android-ndk-r${ANDROID_NDK_VERSION}-linux-x86_64.zip && mv ./android-ndk-r${ANDROID_NDK_VERSION} ${ANDROID_NDK_HOME} && \
-    rm -rf /opt/android-ndk-tmp
+    rm -rf /opt/android-ndk-tmp \
     # Install used dependencies
     curl -sL https://nodejs.org/dist/v${NODEJS_VERSION}/node-v${NODEJS_VERSION}-linux-x64.tar.gz | tar xz --strip-components=1 && \
     apt-get install -y git && \
