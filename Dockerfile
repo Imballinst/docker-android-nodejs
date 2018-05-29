@@ -24,10 +24,9 @@ ENV PATH=$PATH:${ANDROID_NDK}:/opt/node/bin
 RUN set -xe && \
     apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y openjdk-8-jdk git tree zip unzip p7zip p7zip-full curl wget && \
+    apt-get install -y locales openjdk-8-jdk git tree zip unzip p7zip p7zip-full curl wget && \
     rm -rf /var/lib/apt/lists/* && \
     locale-gen en_US.UTF-8
-
 
 # Install Gradle
 RUN cd /opt && wget --output-document=gradle.zip https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip && \
